@@ -1,1 +1,1 @@
-# Student_Management_System_Using_Hibernate_Framework
+# Student_Management_System(Hibernate_Framework)
