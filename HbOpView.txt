@@ -1,0 +1,37 @@
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+import java.util.*;
+
+class HbOpView{
+public static void main(String args[]){
+Configuration cfg = new Configuration();
+cfg.configure("hibernate.cfg.xml");
+
+SessionFactory sf = cfg.buildSessionFactory();
+Session s= null;
+Transaction t = null;
+
+try{
+	s = sf.openSession();
+	System.out.println(" connected ");
+	t = s.beginTranscation();
+	Console c = System.console();
+	ArrayList<Book> b = new ArrayList<>();
+	b = s.createQuery("from Book").list();
+	while(Book bk : b)
+		System.out.println(b.getBid() +" "+b.getBname()+" "+b.getBauthor()+" "+b.getPrice());
+}
+
+catch(Exception e)
+{
+System.out.println("issue e");
+}
+
+finally{
+	s.close();
+	System.out.println(" closed ");
+}
+
+
+}
+}
